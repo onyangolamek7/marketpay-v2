@@ -1,90 +1,123 @@
-import Link from "next/link";
+import Link from 'next/link';
+import type { Metadata } from 'next';
+import { ShieldCheck, Sprout, TrendingUp, Truck } from 'lucide-react';
+import { MarketPayMark } from '@/components/auth/auth-shell';
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: 'MarketPay',
+  description:
+    'One MarketPay account for payments, marketplace trade and delivery across Kenya, Nigeria and Ethiopia.',
+};
+
+const CAPABILITIES = [
+  {
+    Icon: ShieldCheck,
+    title: 'Payments you can trace',
+    detail: 'Wallet, escrow and settlement, with every transaction accounted for.',
+  },
+  {
+    Icon: Sprout,
+    title: 'A marketplace built for food',
+    detail: 'Buy as a household, sell as a retailer, or supply in bulk as a wholesaler.',
+  },
+  {
+    Icon: TrendingUp,
+    title: 'Prices you can plan around',
+    detail: 'AI price intelligence across the markets you actually buy and sell in.',
+  },
+  {
+    Icon: Truck,
+    title: 'Delivery to the last mile',
+    detail: 'Orders tracked from the seller to the door, with riders on the route.',
+  },
+];
+
+export default function WelcomePage() {
   return (
-    <div className="min-h-screen bg-bg font-sans text-text">
-      <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-6 py-16 lg:px-8">
-        <section className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
-          <div className="space-y-8">
-            <div className="inline-flex items-center gap-3 rounded-full border border-surface-deep bg-surface px-4 py-2 text-sm text-text-muted">
-              <span className="h-2.5 w-2.5 rounded-full bg-food" />
-              MarketPay Super App
-            </div>
+    <div className="min-h-screen bg-background">
+      <header className="mx-auto flex w-full max-w-5xl items-center justify-between px-5 py-6 sm:px-8">
+        <MarketPayMark className="text-foreground" />
+        <Link
+          href="/login"
+          className="rounded text-sm font-medium text-action underline-offset-4 hover:underline"
+        >
+          Sign in
+        </Link>
+      </header>
 
-            <div className="space-y-5">
-              <h1 className="max-w-2xl text-4xl font-semibold tracking-tight text-ink sm:text-5xl lg:text-6xl">
-                Faster food commerce, clearer payments, and smarter price discovery.
-              </h1>
-              <p className="max-w-xl text-lg leading-8 text-text-muted sm:text-xl">
-                A MarketPay workspace for wallets, marketplace flows, and AI-assisted savings across
-                consumers, retailers, and wholesalers.
-              </p>
-            </div>
+      <main id="main" className="mx-auto w-full max-w-5xl px-5 pb-20 sm:px-8">
+        <section className="py-10 sm:py-16">
+          <h1 className="max-w-3xl text-3xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+            One account for payments, trade and delivery across Africa.
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-text-muted">
+            MarketPay brings your wallet, your marketplace and your deliveries together — for
+            households, retailers, wholesalers and riders in Kenya, Nigeria and Ethiopia.
+          </p>
 
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/login"
-                className="inline-flex h-12 items-center justify-center rounded-full bg-action px-6 text-sm font-semibold text-white transition-colors hover:bg-action/90"
-              >
-                Sign in
-              </Link>
-              <Link
-                href="/register"
-                className="inline-flex h-12 items-center justify-center rounded-full border border-surface-deep bg-surface px-6 text-sm font-semibold text-ink transition-colors hover:bg-surface-deep"
-              >
-                Create account
-              </Link>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-3">
-              <div className="rounded-2xl border border-surface-deep bg-white p-4 shadow-sm">
-                <p className="text-sm font-medium text-text-muted">Payments</p>
-                <p className="mt-2 text-lg font-semibold text-ink">Secure wallet flows</p>
-              </div>
-              <div className="rounded-2xl border border-surface-deep bg-white p-4 shadow-sm">
-                <p className="text-sm font-medium text-text-muted">Marketplace</p>
-                <p className="mt-2 text-lg font-semibold text-ink">Food-first commerce</p>
-              </div>
-              <div className="rounded-2xl border border-surface-deep bg-white p-4 shadow-sm">
-                <p className="text-sm font-medium text-text-muted">Insights</p>
-                <p className="mt-2 text-lg font-semibold text-ink">AI price intelligence</p>
-              </div>
-            </div>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Link
+              href="/register"
+              className="inline-flex h-12 items-center justify-center rounded-xl bg-primary px-7 text-base font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-action/40"
+            >
+              Create an account
+            </Link>
+            <Link
+              href="/login"
+              className="inline-flex h-12 items-center justify-center rounded-xl border border-border bg-card px-7 text-base font-semibold text-foreground transition-colors hover:bg-surface-deep focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-action/25"
+            >
+              Sign in
+            </Link>
           </div>
 
-          <aside className="relative overflow-hidden rounded-[2rem] border border-surface-deep bg-surface p-8 shadow-sm">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.16),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(22,163,74,0.14),transparent_30%)]" />
-            <div className="relative space-y-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-text-muted">Today&apos;s snapshot</p>
-                  <p className="mt-1 text-2xl font-semibold text-ink">MarketPay</p>
-                </div>
-                <div className="rounded-full bg-food-tint px-3 py-1 text-sm font-medium text-food">
-                  Live
-                </div>
-              </div>
+          <p className="mt-4 text-sm text-text-muted">
+            You will need a phone number you can receive an SMS on. It takes about two minutes.
+          </p>
+        </section>
 
-              <div className="grid gap-4">
-                <div className="rounded-2xl bg-white/90 p-4">
-                  <p className="text-sm text-text-muted">Wallet balance</p>
-                  <p className="mt-2 text-3xl font-semibold text-ink">KES 42,180</p>
+        <section aria-labelledby="capabilities" className="border-t border-border py-10 sm:py-14">
+          <h2 id="capabilities" className="text-xl font-semibold text-foreground">
+            What you can do with MarketPay
+          </h2>
+          <ul className="mt-6 grid gap-6 sm:grid-cols-2">
+            {CAPABILITIES.map(({ Icon, title, detail }) => (
+              <li key={title} className="flex gap-3">
+                <Icon className="mt-0.5 size-5 shrink-0 text-food" aria-hidden="true" />
+                <div>
+                  <h3 className="font-medium text-foreground">{title}</h3>
+                  <p className="mt-1 text-text-muted">{detail}</p>
                 </div>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="rounded-2xl bg-white/90 p-4">
-                    <p className="text-sm text-text-muted">Escrow status</p>
-                    <p className="mt-2 text-lg font-semibold text-success">Protected</p>
-                  </div>
-                  <div className="rounded-2xl bg-white/90 p-4">
-                    <p className="text-sm text-text-muted">Price alert</p>
-                    <p className="mt-2 text-lg font-semibold text-action">-12% this week</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </aside>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section aria-labelledby="access" className="border-t border-border py-10">
+          <h2 id="access" className="text-xl font-semibold text-foreground">
+            Getting in touch and getting help
+          </h2>
+          <div className="mt-4 space-y-3 text-text-muted">
+            <p>
+              These pages work with a keyboard alone and with a screen reader, and are built to stay
+              readable at larger text sizes and on a small phone.
+            </p>
+            <p>
+              No smartphone or data? MarketPay also works over USSD on a basic handset. Ask your
+              local MarketPay agent for the code for your country.
+            </p>
+            <p>
+              If something here is hard to use, tell us — accessibility problems are treated as
+              faults, not requests.
+            </p>
+          </div>
         </section>
       </main>
+
+      <footer className="border-t border-border">
+        <p className="mx-auto w-full max-w-5xl px-5 py-6 text-sm text-text-muted sm:px-8">
+          © {new Date().getFullYear()} MarketPay. Serving Kenya, Nigeria and Ethiopia.
+        </p>
+      </footer>
     </div>
   );
 }

@@ -27,12 +27,12 @@ export function AuthBrandPanel() {
   ];
 
   return (
-    <aside className="hidden bg-primary px-10 py-12 text-white lg:flex lg:w-[42%] lg:flex-col lg:justify-between xl:px-14">
+    <aside className="hidden bg-primary px-10 py-12 text-white lg:flex lg:w-[42%] lg:flex-col xl:px-14">
       <Link href="/" className="w-fit rounded-lg focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-white/40">
         <MarketPayMark />
       </Link>
 
-      <div className="max-w-md space-y-8 py-12">
+      <div className="mt-12 max-w-md space-y-8">
         <h2 className="text-3xl font-semibold leading-tight tracking-tight xl:text-4xl">
           One account for payments, trade and delivery across Africa.
         </h2>
@@ -46,7 +46,7 @@ export function AuthBrandPanel() {
         </ul>
       </div>
 
-      <p className="text-sm text-white/60">
+      <p className="mt-auto pt-12 text-sm text-white/60">
         Serving Kenya, Nigeria and Ethiopia. © {new Date().getFullYear()} MarketPay.
       </p>
     </aside>
